@@ -1,0 +1,111 @@
+/* App.css – estilos de la calculadora (estilo GOTYStore: oscuro con acento dorado) */
+
+:root {
+  --fondo: #0e1120;
+  --tarjeta: #171b30;
+  --borde: #2b3150;
+  --texto: #e8eaf6;
+  --suave: #9aa1c4;
+  --dorado: #f5c542;
+  --dorado-oscuro: #d9a91c;
+  --tecla: #232844;
+  --tecla-hover: #2d3358;
+  --verde: #3ecf8e;
+  --rojo: #ef5350;
+  --ambar: #f5a524;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #1a1f3d 0%, var(--fondo) 55%);
+  color: var(--texto);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.app { max-width: 400px; margin: 0 auto; padding: 24px 16px 40px; }
+
+/* ---------- encabezado ---------- */
+header { text-align: center; margin-bottom: 18px; }
+h1 { margin: 0; font-size: 2rem; color: var(--dorado); letter-spacing: 0.5px; }
+.subtitulo { margin: 2px 0 12px; color: var(--suave); }
+
+.estado {
+  display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center;
+  background: var(--tarjeta); border: 1px solid var(--borde);
+  padding: 6px 14px; border-radius: 999px; font-size: 0.85rem;
+}
+.estado small { color: var(--suave); }
+.punto { width: 10px; height: 10px; border-radius: 50%; background: var(--ambar); }
+.estado-conectado .punto { background: var(--verde); }
+.estado-desconectado .punto { background: var(--rojo); }
+
+/* ---------- calculadora ---------- */
+.calculadora {
+  background: var(--tarjeta); border: 1px solid var(--borde); border-radius: 20px;
+  padding: 16px; margin-bottom: 16px; box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.pantalla {
+  background: #0a0d1c; border: 1px solid var(--borde); border-radius: 14px;
+  padding: 10px 14px 6px; margin-bottom: 14px; text-align: right;
+}
+.expresion { min-height: 1.4em; color: var(--suave); font-size: 1rem; font-family: Consolas, "Courier New", monospace; }
+.valor-pantalla {
+  width: 100%; background: transparent; border: 0; outline: 0; text-align: right;
+  color: var(--dorado); font-size: 2.4rem; font-weight: 600; padding: 2px 0 6px;
+  font-family: Consolas, "Courier New", monospace;
+}
+.valor-pantalla::placeholder { color: #5b6285; }
+.pantalla:focus-within { border-color: var(--dorado); }
+
+.teclado { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+
+.tecla {
+  background: var(--tecla); color: var(--texto); border: 1px solid var(--borde); border-radius: 14px;
+  height: 62px; font-size: 1.4rem; font-weight: 600; cursor: pointer;
+  transition: background 0.12s, transform 0.05s;
+}
+.tecla:hover:not(:disabled) { background: var(--tecla-hover); }
+.tecla:active:not(:disabled) { transform: translateY(1px) scale(0.98); }
+.tecla:disabled { opacity: 0.5; cursor: not-allowed; }
+.tecla-cero { grid-column: span 2; }
+
+.tecla-accion { color: var(--rojo); font-size: 1.2rem; }
+.tecla-operacion {
+  color: var(--dorado); border-color: #5a4a1a; background: #2a2616;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1.05;
+}
+.tecla-operacion:hover:not(:disabled) { background: #3a3318; }
+.tecla-operacion .simbolo { font-size: 1.6rem; }
+.tecla-operacion small { font-size: 0.62rem; font-weight: 500; opacity: 0.85; }
+.tecla-igual { background: var(--dorado); color: #1b1500; border-color: var(--dorado); font-size: 1.6rem; }
+.tecla-igual:hover:not(:disabled) { background: var(--dorado-oscuro); }
+
+.cargando { color: var(--suave); margin: 10px 0 0; text-align: center; }
+
+/* ---------- resultado y errores ---------- */
+.area {
+  background: var(--tarjeta); border: 1px solid var(--borde);
+  border-radius: 14px; padding: 16px; margin-bottom: 14px;
+}
+.area h2 { margin: 0 0 10px; font-size: 0.85rem; color: var(--suave); text-transform: uppercase; letter-spacing: 0.6px; }
+.vacio { color: var(--suave); margin: 0; }
+.operacion { font-size: 1.05rem; margin: 0 0 10px; }
+.valor { font-size: 1.6rem; color: var(--dorado); }
+.etiqueta-json { font-size: 0.78rem; color: var(--suave); margin: 0 0 4px; }
+pre {
+  margin: 0; padding: 12px; background: #0a0d1c; border: 1px solid var(--borde); color: #c8f7dc;
+  border-radius: 8px; font-size: 0.85rem; overflow-x: auto; font-family: Consolas, "Courier New", monospace;
+}
+.error { background: #3b1717; border: 1px solid var(--rojo); color: #ffc9c7; border-radius: 8px; padding: 12px 14px; }
+.error p { margin: 4px 0 0; }
+
+footer { text-align: center; color: var(--suave); font-size: 0.8rem; margin-top: 22px; }
+
+@media (max-width: 380px) {
+  .tecla { height: 54px; }
+  .valor-pantalla { font-size: 2rem; }
+}
