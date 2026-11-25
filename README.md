@@ -4,7 +4,7 @@ Calculadora web visual (pantalla y teclado, estilo GOTYStore; suma, resta, multi
 
 ```
 CalculadoraWebAI_Proyecto/
-├── prompts/               6 archivos: inicial, refinamiento y refinado (backend y frontend)
+
 ├── backend_calculadora/   Python + FastAPI, arquitectura ONION, pruebas pytest
 └── frontend_calculadora/  React + Vite + Axios
 ```
